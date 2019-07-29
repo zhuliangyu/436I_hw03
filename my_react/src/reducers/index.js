@@ -55,7 +55,7 @@ const addReducer = (state = initialState, action) => {
         return new_state;
 
     } else if (action.type === 'DELETE_ALL') {
-        axios.delete('http://localhost:3000/msgs/all');
+        axios.delete('https://message-express.herokuapp.com/msgs/all');
         return [];
 
 

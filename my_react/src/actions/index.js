@@ -18,7 +18,8 @@ export const increment = (amount) => {
 
 export const fetchAll = () => {
     return function (dispatch) {
-        return axios.get('http://localhost:3000/msgs')
+        // return axios.get('http://localhost:3000/msgs')
+        return axios.get('https://message-express.herokuapp.com/msgs')
             .then(res => {
                 const msgs = res.data;
                 dispatch(loadSuccess(msgs));
@@ -28,7 +29,8 @@ export const fetchAll = () => {
 
 export const reset_db = () => {
     return function (dispatch) {
-        return axios.get('http://localhost:3000/msgs/reset')
+        // return axios.get('http://localhost:3000/msgs/reset')
+        return axios.get('https://message-express.herokuapp.com/msgs/reset')
             .then(res => {
                 const msgs = res.data;
                 dispatch(loadSuccess(msgs));
@@ -45,7 +47,7 @@ export const loadSuccess = (payload) => {
 
 export const addArticle = (msg_value) => {
     return function (dispatch) {
-        return axios.post('http://localhost:3000/msgs/',{msg: msg_value})
+        return axios.post('https://message-express.herokuapp.com/msgs/',{msg: msg_value})
             .then(res => {
                 const new_msg = res.data;
                 dispatch(addSuccess(new_msg));
@@ -63,7 +65,7 @@ export const addSuccess = (msg) => {
 
 export const deleteOne = (_id) => {
     return function (dispatch) {
-        return axios.delete('http://localhost:3000/msgs/' + _id)
+        return axios.delete('https://message-express.herokuapp.com/msgs/' + _id)
             .then(res => {
                 const _id = res.data;
                 dispatch(deleteSuccess(_id));
@@ -80,7 +82,7 @@ export const deleteSuccess = (payload) => {
 
 export const edit = (_id, msg) => {
     return function (dispatch) {
-        return axios.put('http://localhost:3000/msgs/' + _id, msg)
+        return axios.put('https://message-express.herokuapp.com/msgs/' + _id, msg)
             .then(res => {
                 const new_msg = res.data;
                 // console.log(new_msg)
